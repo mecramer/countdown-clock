@@ -48,7 +48,8 @@ function updateCountdown() {
 
   // console.log(diff);
 
-  const d = Math.floor(diff / 1000 / 60 / 60 / 24);
+  const y = Math.floor(diff / 1000 / 60 / 60 / 24 / 365);
+  const d = Math.floor(diff / 1000 / 60 / 60 / 24) % 365;
   const h = Math.floor(diff / 1000 / 60 / 60 ) % 24;
   const m = Math.floor(diff / 1000 / 60 ) % 60;
   const s = Math.floor(diff / 1000) % 60;
@@ -57,6 +58,9 @@ function updateCountdown() {
   // console.log(m);
   // console.log(s);
 
+  if(document.querySelector('body').className === "retirement") {
+    years.innerHTML = y;
+  }
   days.innerHTML = d;
   hours.innerHTML = h < 10 ? `0${h}` : h;
   minutes.innerHTML = m < 10 ? `0${m}` : m;
